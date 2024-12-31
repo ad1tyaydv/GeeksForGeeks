@@ -1,0 +1,31 @@
+
+bool pairWiseConsecutive(stack<int> s) {
+    stack<int> temp;
+    bool result = true;
+
+    while (!s.empty()) {
+        temp.push(s.top());
+        s.pop();
+    }
+
+    while (temp.size() > 1) {
+        int x = temp.top();
+        temp.pop();
+        int y = temp.top();
+        temp.pop();
+
+        if (abs(x - y) != 1) {
+            result = false;
+        }
+
+        s.push(x);
+        s.push(y);
+    }
+
+    if (!temp.empty()) {
+        s.push(temp.top());
+        temp.pop();
+    }
+
+    return result;
+}
