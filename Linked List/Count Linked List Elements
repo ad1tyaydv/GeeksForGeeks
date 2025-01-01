@@ -1,0 +1,18 @@
+class Solution {
+  public:
+
+    int getCount(struct Node* head) {
+
+        int size = 0;
+        if(head == NULL) {
+            return size;
+        }
+        
+        while(head != NULL) {
+            head = head->next;
+            size++;
+        }
+        
+        return size;
+    }
+};
