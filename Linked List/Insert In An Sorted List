@@ -1,0 +1,25 @@
+class Solution {
+  public:
+
+    Node* sortedInsert(Node* head, int key) {
+        
+        Node* NewNode = new Node(key);
+        
+        if(head != NULL && key <= head->data) {
+            NewNode->next = head;
+            head = NewNode;
+            return NewNode;
+        }
+        
+        Node* mover = head;
+        
+        while(mover->next && mover->next->data < key) {
+            mover = mover->next;
+        }
+        
+        NewNode->next = mover->next;
+        mover->next = NewNode;
+        
+        return head;
+    }
+};
