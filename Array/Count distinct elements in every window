@@ -1,0 +1,24 @@
+class Solution {
+  public:
+    vector<int> countDistinct(vector<int> &arr, int k) {
+        
+        int n = arr.size();
+        vector<int> ans;
+        
+        for(int i=0;i<=n-k;i++) {
+            vector<int> window(arr.begin() + i, arr.begin() + i + k);
+            
+            sort(window.begin(), window.end());
+            
+            int count = 1;
+            for(int j=1;j<k;j++) {
+                if(window[j] != window[j - 1]) {
+                    count++;
+                }
+            }
+            ans.push_back(count);
+        }
+        
+        return ans;
+    }
+};
