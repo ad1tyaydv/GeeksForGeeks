@@ -1,0 +1,25 @@
+class Solution {
+  public:
+    int longestUniqueSubstr(string &s) {
+        
+        int n = s.size();
+        vector<bool> alpha(256, false);
+        int start = 0, maxlength = 0;
+        
+        for(int i=0;i<n;i++) {
+            
+            char currentchar = s[i];
+            
+            while(alpha[currentchar]) {
+                alpha[s[start]] = false;
+                start++;
+            }
+            
+            alpha[currentchar] = true;
+            
+            maxlength = max(maxlength, i - start + 1);
+        }
+        
+        return maxlength;
+    }
+};
