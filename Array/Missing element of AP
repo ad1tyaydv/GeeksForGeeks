@@ -1,0 +1,16 @@
+class Solution {
+  public:
+    int findMissing(vector<int> &arr) {
+        
+        int n = arr.size();
+        int req_diff = (arr[n - 1] - arr[0]) / n;
+        int ans;
+        for(int i=1;i<n;i++) {
+            if(arr[i] - arr[i - 1] != req_diff) {
+                ans = arr[i] - req_diff;
+            }
+        }
+        
+        return ans;
+    }
+};
