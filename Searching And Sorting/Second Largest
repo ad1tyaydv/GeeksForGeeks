@@ -1,0 +1,21 @@
+class Solution {
+  public:
+  
+    int getSecondLargest(vector<int> &arr) {
+        
+        if(arr.size() == 0) {
+            return -1;
+        }
+        
+        sort(arr.begin(), arr.end(), greater<int>());
+        
+        int max1 = arr[0];
+        for(int i=1;i<arr.size();i++) {
+            if(arr[i] < max1) {
+                return arr[i];
+            }
+        }
+        
+        return -1;
+    }
+};
